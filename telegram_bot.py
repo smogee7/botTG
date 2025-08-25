@@ -2,9 +2,9 @@ import asyncio, secrets
 from aiogram import Bot, Dispatcher, Router, F
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from sqlalchemy import select
-from .config import settings
-from .database import SessionLocal
-from .models import LoginToken, User
+from config import settings
+from database import SessionLocal
+from models import LoginToken, User
 
 router = Router()
 
