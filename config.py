@@ -9,6 +9,6 @@ class Settings(BaseSettings):
     DATABASE_URL: str = "sqlite+aiosqlite:///./app.db"  # файл БД в корне проекта
     ALLOWED_ORIGINS: list[str] = ["http://localhost:5500", "http://127.0.0.1:5500"]
     LOGIN_TOKEN_TTL_SEC: int = 10 * 60  # 10 минут
-    MODERATOR_TG_IDS: List[str] = []    # например ["12345678"]
+    MODERATOR_TG_IDS: List[str] = ["643408817"]    # например ["12345678"]
 
 settings = Settings()
