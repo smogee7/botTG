@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+python-jose[cryptography]
+passlib[bcrypt]
+SQLAlchemy>=2.0
+aiosqlite
+pydantic-settings
+jinja2

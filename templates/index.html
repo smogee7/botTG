@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyTube</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div id="auth-overlay" class="backdrop active">
+    <div class="dialog">
+      <div class="logo">🎬</div>
+      <h1>MyTube</h1>
+      <p class="subtitle">Видео платформа для взрослых</p>
+      <div class="divider"></div>
+      <p class="description">Добро пожаловать в MyTube. Для доступа к контенту необходимо войти в систему.</p>
+      <div class="age-badge">+18</div>
+      <form id="login-form" class="form">
+        <label class="label" for="login-username">Логин или email</label>
+        <input id="login-username" name="username" type="text" placeholder="Введите логин или email" required />
+        <label class="label" for="login-password">Пароль</label>
+        <input id="login-password" name="password" type="password" placeholder="Введите пароль" required />
+        <button type="submit" class="primary">Войти в систему</button>
+      </form>
+      <p class="muted">Нет аккаунта? <button id="open-register" class="link-btn" type="button">Зарегистрироваться</button></p>
+    </div>
+  </div>
+
+  <div id="register-overlay" class="backdrop">
+    <div class="dialog">
+      <div class="logo">🎬</div>
+      <h1>Создать аккаунт</h1>
+      <p class="subtitle">Заполните форму для регистрации</p>
+      <div class="divider"></div>
+      <form id="register-form" class="form">
+        <label class="label" for="register-username">Логин</label>
+        <input id="register-username" name="username" type="text" placeholder="Придумайте логин" required />
+        <label class="label" for="register-email">Email</label>
+        <input id="register-email" name="email" type="email" placeholder="Введите email" required />
+        <label class="label" for="register-password">Пароль</label>
+        <input id="register-password" name="password" type="password" placeholder="Создайте пароль" required />
+        <button type="submit" class="primary">Зарегистрироваться</button>
+      </form>
+      <p class="muted">Уже есть аккаунт? <button id="back-to-login" class="link-btn" type="button">Войти</button></p>
+    </div>
+  </div>
+
+  <div id="app" class="page" hidden>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🎬</div>
+        <div>
+          <div class="brand-title">MyTube</div>
+          <div class="brand-subtitle">Видеоплатформа для взрослых</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a class="active" href="#">Главная</a>
+        <a href="#">Лучшее</a>
+        <a href="#">Подписки</a>
+        <a href="#">Избранное</a>
+        <a href="#">История</a>
+        <a href="#">Донаты</a>
+      </nav>
+      <div class="actions">
+        <div class="search">
+          <input id="search" type="search" placeholder="Поиск..." />
+        </div>
+        <div class="user-pill" id="user-pill">
+          <span class="avatar">😊</span>
+          <span class="username" id="username-label">Гость</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="hero">
+        <div>
+          <div class="badge">Подтверждение возраста — вход для 18+</div>
+          <h2>Добро пожаловать в видеоплатформу MyTube.</h2>
+          <p class="muted">Чтобы найти классный контент, воспользуйтесь фильтрами справа и списками ниже.</p>
+          <div class="buttons">
+            <button class="primary">Подтверждаю, мне есть 18 лет</button>
+            <button class="ghost">Войти в сервис</button>
+          </div>
+        </div>
+        <div class="filters">
+          <div class="filter-card">
+            <div class="filter-header">Быстрый доступ</div>
+            <div class="filter-grid" id="quick-access">
+              <button class="filter-btn">Избранное</button>
+              <button class="filter-btn">История</button>
+              <button class="filter-btn">Вы просматривали</button>
+              <button class="filter-btn">Сохраненные создатели</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h3>Популярные категории</h3>
+          <button class="ghost" id="show-more-categories">Показать еще пару</button>
+        </div>
+        <div class="chip-grid" id="categories"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h3>Популярные теги</h3>
+          <button class="ghost" id="show-more-tags">Показать ещё</button>
+        </div>
+        <div class="chip-grid" id="tags"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h3>Популярные создатели</h3>
+        </div>
+        <div class="creators" id="creators"></div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-number" id="stat-videos">0</div>
+            <div class="stat-label">Видео</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" id="stat-creators">0</div>
+            <div class="stat-label">Создателей</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" id="stat-members">0</div>
+            <div class="stat-label">Участников</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
